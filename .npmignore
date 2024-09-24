@@ -1,3 +1,13 @@
+synchroconf:
+  conditions:
+    - config:
+      filename: package.json # Also support yaml, toml, and xml
+      key: "private"
+      condition: "is" # or "is not" | "includes" | "starts with" | "ends with" | "not include" | "not start with" | "not end with"
+      value: true
+
+---
+
 /.github/
 /.vscode/
 src/

@@ -1,8 +1,7 @@
-#
-# Project-Specific
-#
+synchroconf:
+  partialSync: true
 
-# TODO
+---
 
 #
 # System
