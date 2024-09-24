@@ -1,0 +1,3 @@
+# Auto detect text files and enforce LF as linebreaks
+*     text=auto eol=lf
+*.csv text      eol=crlf
