@@ -10,38 +10,20 @@
     {
       "name": ".github/dependabot-jsts.yml",
       "renameTo": "dependabot.yml",
-      "conditions": [
-        {
-          "when": "fileNotExist",
-          "filenames": [ // If the files with the following name exist in any directory in the repo
-            "Dockerfile",
-            "docker-compose.yml",
-            "docker-compose.yaml" // TODO allow regex or glob pattern. Also automatically treat *.yml and *.yaml as same.
-          ]
-          // OR...
-          // "paths": [
-          //   "./Dockerfile" # If a file named "Dockerfile" exists in the project root of the repo
-          // ]
-        }
-      ]
+      "condition": {
+        "fileExists": false,
+        // If "Dockerfile" exists in any directory in the repo, it returns true.
+        "filename": "Dockerfile"
+      }
     },
     {
       "name": ".github/dependabot-jsts.yml",
       "renameTo": "dependabot.yml",
-      "conditions": [
-        {
-          "when": "fileExists",
-          "filenames": [ // If the files with the following name exist in any directory in the repo
-            "Dockerfile",
-            "docker-compose.yml",
-            "docker-compose.yaml" // TODO allow regex or glob pattern. Also automatically treat *.yml and *.yaml as same.
-          ]
-          // OR...
-          // "paths": [
-          //   "./Dockerfile" # If a file named "Dockerfile" exists in the project root of the repo
-          // ]
-        }
-      ]
+      "condition": {
+        "fileExists": true,
+        // If "Dockerfile" exists in the project root of the repo, it returns true.
+        "path": "./Dockerfile"
+      }
     },
     {
       "name": ".vscode/extensions.json",
@@ -61,7 +43,14 @@
       "name": ".npmignore",
       "config": {
         "filename": "package.json", // TODO Also support yaml, toml, and xml
-        "condition": [ "private", "is", true ] // or "is not" | "includes" | "starts with" | "ends with" | "not include" | "not start with" | "not end with"
+        // The key name is arbitrary key name in the target file.
+        // - `"dependencies.@types/node": [ "exists" ]`,
+        // - `"contributors[]": [ "startsWith": "Jumpei Ogawa" ]`
+        // are also supported
+        //
+        // In addition to "is", "isNot" | "includes" | "startsWith" | "endsWith" |
+        // "notInclude" | "notStartWith" | "notEndWith" are also supported.
+        "private": [ "is", true ]
       }
     },
     {
