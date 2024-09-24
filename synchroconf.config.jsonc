@@ -1,0 +1,14 @@
+{
+  // template directory (Default is PROJECT_ROOT/templates/)
+  "templateDir": "./templates",
+  // Do not add or sync these files to the target repository
+  "exclude": [
+    "./templates/file-to-ignore.md"
+  ],
+  // By default, Synchroconf targets all of the user's personal repos
+  "targetRepo": {
+    "owners": [ "phanect", "exampleorg" ],
+    "repos": [ "*" ],
+    "exclude": "phanect/repo-to-exclude"
+  }
+}
