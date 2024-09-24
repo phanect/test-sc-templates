@@ -1,8 +1,3 @@
-synchroconf:
-  initialTemplate: true
-
----
-
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",

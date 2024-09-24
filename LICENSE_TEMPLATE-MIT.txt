@@ -1,10 +1,3 @@
-synchroconf:
-  rename: LICENSE.txt
-  conditions:
-    - license: MIT
-
----
-
 MIT License
 
 Copyright (c) 2024-present Jumpei Ogawa (https://phanective.org)
