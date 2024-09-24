@@ -1,0 +1,95 @@
+{
+  "files": [
+    {
+      "name": ".github/workflows/actions.yml",
+      // Add this file when one of the following conditions are met:
+      // 1. The repository is newly created on GitHub
+      // 2. This file does not exist in the target repository AND the repository has 0 or 1 commits.
+      "initialTemplate": true
+    },
+    {
+      "name": ".github/dependabot-jsts.yml",
+      "renameTo": "dependabot.yml",
+      "conditions": [
+        {
+          "when": "fileNotExist",
+          "filenames": [ // If the files with the following name exist in any directory in the repo
+            "Dockerfile",
+            "docker-compose.yml",
+            "docker-compose.yaml" // TODO allow regex or glob pattern. Also automatically treat *.yml and *.yaml as same.
+          ]
+          // OR...
+          // "paths": [
+          //   "./Dockerfile" # If a file named "Dockerfile" exists in the project root of the repo
+          // ]
+        }
+      ]
+    },
+    {
+      "name": ".github/dependabot-jsts.yml",
+      "renameTo": "dependabot.yml",
+      "conditions": [
+        {
+          "when": "fileExists",
+          "filenames": [ // If the files with the following name exist in any directory in the repo
+            "Dockerfile",
+            "docker-compose.yml",
+            "docker-compose.yaml" // TODO allow regex or glob pattern. Also automatically treat *.yml and *.yaml as same.
+          ]
+          // OR...
+          // "paths": [
+          //   "./Dockerfile" # If a file named "Dockerfile" exists in the project root of the repo
+          // ]
+        }
+      ]
+    },
+    {
+      "name": ".vscode/extensions.json",
+      "initialTemplate": true
+    },
+    {
+      "name": ".vscode/launch.json",
+      "initialTemplate": true
+    },
+    {
+      "name": ".gitignore",
+      // Keep the existing content of .gitignore in the target repository
+      // and create the section to add the content of .gitignore in this repository
+      "partialSync": true
+    },
+    {
+      "name": ".npmignore",
+      "config": {
+        "filename": "package.json", // TODO Also support yaml, toml, and xml
+        "condition": [ "private", "is", true ] // or "is not" | "includes" | "starts with" | "ends with" | "not include" | "not start with" | "not end with"
+      }
+    },
+    {
+      "name": "LICENSE_TEMPLATE-APACHE.txt",
+      "renameTo": "LICENSE",
+      "condition": {
+        "license": [ "is", "Apache-2.0" ]
+      }
+    },
+    {
+      "name": "LICENSE_TEMPLATE-CC0.txt",
+      "renameTo": "LICENSE",
+      "condition": {
+        "license": [ "is", "CC0-1.0" ]
+      }
+    },
+    {
+      "name": "LICENSE_TEMPLATE-MIT.txt",
+      "renameTo": "LICENSE",
+      "condition": {
+        "license": [ "is", "MIT" ]
+      }
+    }
+  ],
+  // Do not add or sync these files to the target repository
+  "exclude": [
+    "eslint.config.js",
+    "LICENSE.txt",
+    "README.md"
+  ]
+}
